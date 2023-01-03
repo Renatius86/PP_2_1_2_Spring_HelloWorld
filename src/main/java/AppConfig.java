@@ -6,9 +6,18 @@ import org.springframework.context.annotation.Scope;
 public class AppConfig {
  
     @Bean(name="helloworld")
+    @Scope("singleton")
     public HelloWorld getHelloWorld() {
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.setMessage("Hello World!");
         return helloWorld;
+    }
+
+    @Bean("catBean")
+    @Scope("prototype")
+    public Cat getCatName() {
+        Cat cat = new Cat();
+        cat.setName("Tom");
+        return cat;
     }
 }
